@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>vue-observer base example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="../../dist/vue-observer.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const logger = console.log
+      console.log = function (key, value) {
+        const text = `${key}: ${JSON.stringify(value)}`
+        logger(text)
+        let line = document.createElement('div')
+        line.textContent = text
+        document.getElementById('app').append(line)
+      }
+    </script>
+    <script>
+      var vm = new ViewModel({
+        data: {
+          o1: 1,
+          o2: {o3: 3},
+          list: [{l1: 1}, {l2:  2}]
+        },
+        // render: function () {},
+        render: function () {
+          Array.prototype.slice.call(document.getElementById('app').children).forEach(function (ele) {
+            ele.remove()
+          })
+          console.log('o1', this.o1)
+          console.log('o2', this.o2)
+          console.log('o4', this.o4)
+          console.log('o5', this.o5)
+          for (var i=0;i<this.list.length;i++) {
+            console.log('list-' + i, this.list[i])
+          }
+        },
+        watch: {
+          'o2.o3': function () {
+            console.log('change')
+          }
+        },
+        computed: {
+          o4: function () {
+            return this.o1 + this.o2.o3
+          },
+          o5:  function () {
+            return this.o1 - this.o2.o3
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

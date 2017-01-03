@@ -5,7 +5,6 @@ explorations
 TODOs.md
 dist/*.gz
 dist/*.map
-dist/vue.common.min.js
 test/e2e/reports
 test/e2e/screenshots
 coverage

@@ -112,7 +112,7 @@ function createWatcher (vm, key, handler) {
   vm.$watch(key, handler, options)
 }
 
-export function stateMixin (ViewModel) {
+export function stateMixin (VueModel) {
   // flow somehow has problems with directly declared definition object
   // when using Object.defineProperty, so we have to procedurally build up
   // the object here.
@@ -120,12 +120,12 @@ export function stateMixin (ViewModel) {
   dataDef.get = function () {
     return this._data
   }
-  Object.defineProperty(ViewModel.prototype, '$data', dataDef)
+  Object.defineProperty(VueModel.prototype, '$data', dataDef)
 
-  ViewModel.prototype.$set = set
-  ViewModel.prototype.$delete = del
+  VueModel.prototype.$set = set
+  VueModel.prototype.$delete = del
 
-  ViewModel.prototype.$watch = function (
+  VueModel.prototype.$watch = function (
     expOrFn,
     cb,
     options

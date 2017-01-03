@@ -1,3 +1,3 @@
-import ViewModel from './instance/index'
+import VueModel from './instance/index'
 
-export default ViewModel
+export default VueModel

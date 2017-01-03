@@ -7,8 +7,8 @@ const version = process.env.VERSION || require('../package.json').version
 
 const banner =
   '/*!\n' +
-  ' * Vue.js v' + version + '\n' +
-  ' * (c) 2014-' + new Date().getFullYear() + ' Evan You\n' +
+  ' * vue-observer.js v' + version + '\n' +
+  ' * From Vue.js (c) 2014-' + new Date().getFullYear() + ' Evan You\n' +
   ' * Released under the MIT License.\n' +
   ' */'
 
@@ -19,7 +19,7 @@ function genConfig (opts) {
     external: opts.external,
     format: opts.format,
     banner: opts.banner,
-    moduleName: 'ViewModel',
+    moduleName: 'VueModel',
     plugins: [
       flow(),
       buble(),
